@@ -4,6 +4,9 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+     include: ['emotion/styled'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
