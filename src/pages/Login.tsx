@@ -1,7 +1,6 @@
 import { Box, Container, Grid } from '@mui/material'
 import { BannerImage } from '@/components'
 
-
 function Login() {
   return (
     <>
