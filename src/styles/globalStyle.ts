@@ -1,12 +1,5 @@
-import { createGlobalStyle,} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
-
-declare module 'styled-components' {
-  export interface DefaultTheme {
-    appBackground: string;
-    appColor: string;
-  }
-}
 
 export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
     body, html {
@@ -16,7 +9,7 @@ export const GlobalStyle = createGlobalStyle<{ theme?: DefaultTheme }>`
         padding: 0;
         font-family: "DM Serif Display", serif;
     }
-    h1, h2, p, ul, li {
+    h1, h2, p, ul, li, figure {
         margin: 0;
         padding: 0;
     }
