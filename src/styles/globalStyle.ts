@@ -5,6 +5,8 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     appBackground: string
     appColor: string
+    appDefaultStroke: string
+    card: string
   }
 }
 
