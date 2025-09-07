@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 // COMPONENTS
 import { 
   AvatarList, 
@@ -32,13 +32,13 @@ function Home() {
     data: salesMonthData,
     loading: salesMonthLoading,
     error: salesMonthError,
-  } = useGet<CustomChartProps[]>('sales/month')
+  } = useGet<CustomChartProps>('sales/month')
 
    const {
      data: salesStarsData,
      loading: salesStarsLoading,
      error: salesStarsError,
-   } = useGet<StarsData[]>('sales/Stars')
+   } = useGet<StarsData[]>('sales/stars')
 
    const {
      data: newsData,
@@ -50,7 +50,7 @@ function Home() {
       data: salesYearData,
       loading: salesYearLoading,
       error: salesYearError,
-    } = useGet<CustomChartProps[]>('sales/year')
+    } = useGet<CustomChartProps>('sales/year')
 
 
   return (
@@ -118,13 +118,13 @@ function Home() {
                   }
                 >
                   {!highlightsLoading && highlightsData && (
-                    <>
-                      <StyledH2 className="mb-1">Leads contactados</StyledH2>
-                      <StyledH3 className="mb-1" size={40} lineHeight={40}>
-                        {highlightsData[2].value}
-                      </StyledH3>
-                      <StyledSpan>{highlightsData[2].subtitle}</StyledSpan>
-                    </>
+                      <Link to="/leads">
+                        <StyledH2 className="mb-1">Leads contactados</StyledH2>
+                        <StyledH3 className="mb-1" size={40} lineHeight={40}>
+                          {highlightsData[2].value}
+                        </StyledH3>
+                        <StyledSpan>{highlightsData[2].subtitle}</StyledSpan>
+                      </Link>
                   )}
                 </CardComponent>
               </Grid>
@@ -144,9 +144,9 @@ function Home() {
                   <>
                     <StyledH2 className="mb-1">Valor de vendas no mês</StyledH2>
                     <CustomChart
-                      labels={salesMonthData[0]?.labels.map((label) => label)}
-                      data={salesMonthData[0]?.data.map((data) => data)}
-                      type={salesMonthData[0]?.type}
+                      labels={salesMonthData.labels.map((label) => label)}
+                      data={salesMonthData.data.map((data) => data)}
+                      type={salesMonthData.type}
                     />
                   </>
                 )}
@@ -192,15 +192,15 @@ function Home() {
                     <CustomTable
                       headers={['Título', 'Horário']}
                       rows={newsData.map((news) => [
-                        <a 
-                        className='ellipsis ellipsis-sm' 
-                        href={news.link} 
-                        target="_blank"
-                        > 
-                        {news.title}
+                        <a
+                          className="ellipsis ellipsis-sm"
+                          href={news.link}
+                          target="_blank"
+                        >
+                          {news.title}
                         </a>,
-                        <a href={news.link} target="_blank"> 
-                        {news.date}
+                        <a href={news.link} target="_blank">
+                          {news.date}
                         </a>,
                       ])}
                     />
@@ -210,7 +210,7 @@ function Home() {
             )}
           </Grid>
           <Grid item xs={12} md={7}>
-             {!salesYearError && (
+            {!salesYearError && (
               <CardComponent
                 className={
                   salesYearLoading
@@ -220,11 +220,13 @@ function Home() {
               >
                 {!salesYearLoading && salesYearData && (
                   <>
-                   <StyledH2 className="mb-1">Valor de Vendas por mês</StyledH2>
+                    <StyledH2 className="mb-1">
+                      Valor de Vendas por mês
+                    </StyledH2>
                     <CustomChart
-                      labels={salesYearData[0]?.labels.map((label) => label)}
-                      data={salesYearData[0]?.data.map((data) => data)}
-                      type={salesYearData[0]?.type}
+                      labels={salesYearData.labels.map((label) => label)}
+                      data={salesYearData.data.map((data) => data)}
+                      type={salesYearData.type}
                     />
                   </>
                 )}
