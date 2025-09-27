@@ -6,7 +6,9 @@ describe('highlightTextConverter', () => {
   })
 
   it('should return the correct text for " success"', () => {
-    expect(highlightTextConverter('success')).toBe('* A meta do mês foi batida! Parabéns!')
+    expect(highlightTextConverter('success')).toBe(
+      '* A meta do mês foi batida! Parabéns!'
+    )
   })
 
   it('should return the correct text for " warning"', () => {

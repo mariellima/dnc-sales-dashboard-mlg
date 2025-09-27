@@ -1,31 +1,36 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 // COMPONENTS
-import { 
-  AvatarList, 
-  CardComponent, 
-  CustomChart, 
-  CustomTable, 
+import {
+  AvatarList,
+  CardComponent,
+  CustomChart,
+  CustomTable,
   Header,
   StyledH2,
   StyledH3,
   StyledSpan,
-} from "@/components"
-import { Container, Grid } from "@mui/material"
+} from '@/components'
+import { Container, Grid } from '@mui/material'
 
 // HOOKS
-import { useGet } from "@/hooks" 
+import { useGet } from '@/hooks'
 
 // UTILS
 import { currencyConverter, highlightTextConverter } from '@/utils'
 
 // TYPES
-import type { HighlightsData, StarsData, NewsData, CustomChartProps } from "@/types"
+import type {
+  HighlightsData,
+  StarsData,
+  NewsData,
+  CustomChartProps,
+} from '@/types'
 
 function Home() {
-  const { 
+  const {
     data: highlightsData,
     loading: highlightsLoading,
-    error: highlightsError,  
+    error: highlightsError,
   } = useGet<HighlightsData[]>('sales/highlights')
 
   const {
@@ -34,24 +39,23 @@ function Home() {
     error: salesMonthError,
   } = useGet<CustomChartProps>('sales/month')
 
-   const {
-     data: salesStarsData,
-     loading: salesStarsLoading,
-     error: salesStarsError,
-   } = useGet<StarsData[]>('sales/stars')
+  const {
+    data: salesStarsData,
+    loading: salesStarsLoading,
+    error: salesStarsError,
+  } = useGet<StarsData[]>('sales/stars')
 
-   const {
-     data: newsData,
-     loading: newsLoading,
-     error: newsError,
-   } = useGet<NewsData[]>('news')
+  const {
+    data: newsData,
+    loading: newsLoading,
+    error: newsError,
+  } = useGet<NewsData[]>('news')
 
-    const {
-      data: salesYearData,
-      loading: salesYearLoading,
-      error: salesYearError,
-    } = useGet<CustomChartProps>('sales/year')
-
+  const {
+    data: salesYearData,
+    loading: salesYearLoading,
+    error: salesYearError,
+  } = useGet<CustomChartProps>('sales/year')
 
   return (
     <>

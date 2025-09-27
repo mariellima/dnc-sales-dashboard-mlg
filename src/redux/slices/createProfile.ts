@@ -1,9 +1,9 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import type { CreateProfileData } from "@/types"
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import type { CreateProfileData } from '@/types'
 
 const initialState: Omit<CreateProfileData, 'name' | 'phone' | 'password'> = {
-    email: '',
-    message: null,
+  email: '',
+  message: null,
 }
 
 const profileSlice = createSlice({
@@ -20,15 +20,9 @@ const profileSlice = createSlice({
     },
     setMessage: (state, action: PayloadAction<string>) => {
       state.message = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { setProfileData, setMessage } = profileSlice.actions
 export default profileSlice.reducer
-        
-
- 
-
-
-

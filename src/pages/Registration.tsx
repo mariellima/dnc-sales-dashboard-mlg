@@ -28,8 +28,10 @@ import type { CreateProfileData, InputProps } from '@/types'
 function Registration() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { email } = useSelector((state: RootState) => state.createProfile)  
-  const { data, error, loading, postData } = usePost<string, CreateProfileData>('profile/create')
+  const { email } = useSelector((state: RootState) => state.createProfile)
+  const { data, error, loading, postData } = usePost<string, CreateProfileData>(
+    'profile/create'
+  )
 
   // FORM STEP1
   const step1Inputs: InputProps[] = [
@@ -52,9 +54,7 @@ function Registration() {
   } = useFormValidation(step1Inputs)
 
   // FORM STEP2
-  const step2Inputs: InputProps[] = [
-    { type: 'password', placeholder: 'Senha' },
-  ]
+  const step2Inputs: InputProps[] = [{ type: 'password', placeholder: 'Senha' }]
   const handleStep2 = async (e: React.FormEvent) => {
     e.preventDefault()
     await postData({
@@ -77,7 +77,9 @@ function Registration() {
       dispatch(setMessage('Usuário criado com sucesso.'))
       navigate('/')
     } else if (error) {
-      alert(`Não foi possível realizar a operação. Entre em contato com o suporte ${error}.`)
+      alert(
+        `Não foi possível realizar a operação. Entre em contato com o suporte ${error}.`
+      )
     }
   }, [data, error, navigate])
 
@@ -117,21 +119,31 @@ function Registration() {
                 inputs={handleStepInputs.map((input, index) => ({
                   type: input.type,
                   placeholder: input.placeholder,
-                  value: email ? step2FormValues[index] || '' : step1FormValues[index] || '',
+                  value: email
+                    ? step2FormValues[index] || ''
+                    : step1FormValues[index] || '',
                   onChange: (e: ChangeEvent<HTMLInputElement>) =>
                     email
-                      ? step2FormHandleChange(index, (e.target as HTMLInputElement).value)
-                      : step1FormHandleChange(index, (e.target as HTMLInputElement).value),
+                      ? step2FormHandleChange(
+                          index,
+                          (e.target as HTMLInputElement).value
+                        )
+                      : step1FormHandleChange(
+                          index,
+                          (e.target as HTMLInputElement).value
+                        ),
                   name: input.name,
                   required: input.required,
                 }))}
                 buttons={[
-                  { 
-                    className: 'primary', 
-                    disabled: email ? !step2FormValid || loading : !step1FormValid,
+                  {
+                    className: 'primary',
+                    disabled: email
+                      ? !step2FormValid || loading
+                      : !step1FormValid,
                     onClick: email ? handleStep2 : handleStep1,
-                    type: 'submit', 
-                    children: email ? 'Enviar' : 'Próximo'
+                    type: 'submit',
+                    children: email ? 'Enviar' : 'Próximo',
                   },
                 ]}
               />

@@ -3,6 +3,6 @@ export interface LoginData {
 }
 
 export interface LoginPostData {
-  email: string,
+  email: string
   password: string
 }

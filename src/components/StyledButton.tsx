@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import type { ButtonProps } from '@/types'
 import { pxToRem } from '@/utils'
 
-
 export const StyledButton = styled.button<ButtonProps>`
   border-radius: ${pxToRem(8)};
   border: none;

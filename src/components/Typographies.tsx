@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import type { TypographiesProps } from '@/types'
 import { pxToRem } from '@/utils'
 
-
 export const StyledH1 = styled.h1<TypographiesProps>`
   color: ${(props) => props.color || 'inherit'};
   font-size: ${(props) => pxToRem(props.size || 24)};
@@ -10,7 +9,6 @@ export const StyledH1 = styled.h1<TypographiesProps>`
   letter-spacing: ${pxToRem(-1)};
   line-height: ${(props) => pxToRem(props.lineHeight || 36)};
 `
-
 
 export const StyledH2 = styled.h2<TypographiesProps>`
   color: ${(props) => props.color || 'inherit'};
@@ -24,8 +22,6 @@ export const StyledH3 = styled.h2<TypographiesProps>`
   font-weight: ${(props) => props.weight || 600};
   line-height: ${(props) => pxToRem(props.lineHeight || 24)};
 `
-
-
 
 export const StyledP = styled.p<TypographiesProps>`
   color: ${(props) => props.color || 'inherit'};
@@ -50,5 +46,5 @@ export const StyledUl = styled.ul<TypographiesProps>`
   li {
     list-style-position: outside;
     margin-left: ${pxToRem(15)};
- }
+  }
 `

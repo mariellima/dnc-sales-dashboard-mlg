@@ -12,16 +12,16 @@ export const CardComponent = styled.div`
     background-color: ${(props) => props.theme.card.alert};
     border-color: ${(props) => props.theme.card.alert};
   }
- &.sucess {
+  &.sucess {
     background-color: ${(props) => props.theme.card.sucess};
     border-color: ${(props) => props.theme.card.sucess};
- }
- &.warning {
+  }
+  &.warning {
     background-color: ${(props) => props.theme.card.warning};
     border-color: ${(props) => props.theme.card.warning};
-    }
- a {
-  color: inherit;
+  }
+  a {
+    color: inherit;
     text-decoration: none;
- }   
+  }
 `

@@ -48,7 +48,7 @@ const TableWrapper = styled.div`
  
 `
 function CustomTable(props: CustomTableProps) {
-  const { headers, rows } = props;
+  const { headers, rows } = props
   return (
     <TableWrapper>
       <table>
