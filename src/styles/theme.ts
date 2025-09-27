@@ -1,6 +1,48 @@
-import type { Theme } from '@/types'
+export interface Theme {
+  appBackground: string
+  appColor: string
+  appDefaultStroke: string
+  appLogo: string
+  appSkeletonFrom: string
+  appSkeletonTo: string
 
-export const lighTheme: Theme = {
+  buttons: {
+    alert: string
+    alertColor: string
+    alertHover: string
+    disabled: string
+    disabledColor: string
+    primary: string
+    primaryColor: string
+    primaryHover: string
+  }
+
+  card: {
+    alert: string
+    background: string
+    border: string
+    sucess: string
+    warning: string
+  }
+
+  textInput: {
+    active: string
+    activeColor: string
+    bordercolor: string
+    disabled: string
+    disabledBorderColor: string
+    disabledColor: string
+    placeholderColor: string
+  }
+
+  typographies: {
+    error: string
+    subtitle: string
+    success: string
+  }
+}
+
+export const lightTheme: Theme = {
   appBackground: '#FFF',
   appColor: '#000',
   appDefaultStroke: '#E0E0E0',
@@ -35,7 +77,7 @@ export const lighTheme: Theme = {
   },
   typographies: {
     error: '#FF0202',
-    subtitle: '#666',
+    subtitle: '#828282',
     success: '#008000',
   },
 }
