@@ -32,28 +32,28 @@ function CustomChart(props: CustomChartProps) {
     responsive: true,
     scaleShowVerticalLines: false,
     scales: {
-        x: {
-            border: {
-                display: false
-            },
-            grid: {
-                display: false
-            },
-            ticks: {
-                color: theme.typographies.subtitle
-            }
+      x: {
+        border: {
+          display: false,
         },
-        y: {
-            border: {
-                display: false
-            },
-            grid: {
-                color: theme.appDefaultStroke,
-            },
-            ticks: {
-                color: theme.typographies.subtitle
-            },
+        grid: {
+          display: false,
         },
+        ticks: {
+          color: theme.typographies.subtitle,
+        },
+      },
+      y: {
+        border: {
+          display: false,
+        },
+        grid: {
+          color: theme.appDefaultStroke,
+        },
+        ticks: {
+          color: theme.typographies.subtitle,
+        },
+      },
     },
     plugins: {
       legend: {
@@ -72,8 +72,11 @@ function CustomChart(props: CustomChartProps) {
       },
     ],
   }
-  return type === 'bar' ? (<Bar data={chartData} options={options}/>) : (<Line data={chartData} options={options} />)
-    
+  return type === 'bar' ? (
+    <Bar data={chartData} options={options} />
+  ) : (
+    <Line data={chartData} options={options} />
+  )
 }
 
 export default CustomChart

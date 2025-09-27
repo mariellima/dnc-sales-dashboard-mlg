@@ -6,7 +6,13 @@ import Cookies from 'js-cookie'
 
 // COMPONENTS
 import { Box, Container, Grid } from '@mui/material'
-import { BannerImage, FormComponent, Logo, StyledH1, StyledP } from '@/components'
+import {
+  BannerImage,
+  FormComponent,
+  Logo,
+  StyledH1,
+  StyledP,
+} from '@/components'
 
 // HOOKS
 import { useFormValidation, usePost } from '@/hooks'
@@ -15,7 +21,12 @@ import { useFormValidation, usePost } from '@/hooks'
 import { jwtExpirationDateConverter, pxToRem } from '@/utils'
 
 // TYPES
-import type { DecodedJWT, MessageProps, LoginData, LoginPostData } from '@/types'
+import type {
+  DecodedJWT,
+  MessageProps,
+  LoginData,
+  LoginPostData,
+} from '@/types'
 
 // REDUX
 import { useSelector } from 'react-redux'
@@ -23,49 +34,53 @@ import { type RootState } from '@/redux'
 
 function Login() {
   const navigate = useNavigate()
-  const { email, message } = useSelector((state: RootState) => state.createProfile)  
+  const { email, message } = useSelector(
+    (state: RootState) => state.createProfile
+  )
   const inputs = [
-    { type: 'email',  placeholder: 'Email'},
-    { type: 'password',  placeholder: 'Senha'},
+    { type: 'email', placeholder: 'Email' },
+    { type: 'password', placeholder: 'Senha' },
   ]
-  const { data, error, loading, postData } = usePost<LoginData, LoginPostData>('login')
-  const { formValues, formValid, handleChange} = useFormValidation(inputs)
+  const { data, error, loading, postData } = usePost<LoginData, LoginPostData>(
+    'login'
+  )
+  const { formValues, formValid, handleChange } = useFormValidation(inputs)
 
   const handleMessage = (): MessageProps => {
-    if (!error) return {message: message ?? '', type: 'success'}
+    if (!error) return { message: message ?? '', type: 'success' }
     switch (error) {
       case 401:
-        return { 
-        message: 'Email ou senha inválidos',
-        type: 'error',
-      } 
-      default:
-        return { 
-          message: 'Não foi possível realizar a operação. Entre em contato com o suporte.',
+        return {
+          message: 'Email ou senha inválidos',
           type: 'error',
-        }    
+        }
+      default:
+        return {
+          message:
+            'Não foi possível realizar a operação. Entre em contato com o suporte.',
+          type: 'error',
+        }
+    }
   }
-}
 
-const handleSubmit =async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     await postData({
       email: String(formValues[0]),
       password: String(formValues[1]),
     })
-
-}
+  }
 
   useEffect(() => {
     if (data?.jwt_token) {
       const decoded: DecodedJWT = jwtDecode(data?.jwt_token)
       Cookies.set('Authorization', data?.jwt_token, {
-         expires: jwtExpirationDateConverter(decoded.exp),
-         secure: true,
-        })
+        expires: jwtExpirationDateConverter(decoded.exp),
+        secure: true,
+      })
     }
-     if (Cookies.get('Authorization')) navigate('/home')
-  }, [data, navigate])  
+    if (Cookies.get('Authorization')) navigate('/home')
+  }, [data, navigate])
 
   useEffect(() => {
     if (email) {
@@ -85,7 +100,8 @@ const handleSubmit =async (e: React.FormEvent) => {
           >
             <Container maxWidth="sm">
               <Box sx={{ marginBottom: pxToRem(24) }}>
-                <Logo height={41} width={100}/></Box>
+                <Logo height={41} width={100} />
+              </Box>
               <Box sx={{ marginBottom: pxToRem(24) }}>
                 <StyledH1>Bem-vindo</StyledH1>
                 <StyledP>Digite sua senha e email para logar</StyledP>
@@ -96,7 +112,7 @@ const handleSubmit =async (e: React.FormEvent) => {
                   placeholder: input.placeholder,
                   value: formValues[index] || '',
                   onChange: (e: ChangeEvent<HTMLInputElement>) =>
-                    handleChange(index,(e.target as HTMLInputElement).value),
+                    handleChange(index, (e.target as HTMLInputElement).value),
                 }))}
                 buttons={[
                   {

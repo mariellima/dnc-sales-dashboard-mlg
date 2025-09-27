@@ -30,7 +30,9 @@ describe('StyledButton', () => {
       })
 
       it('should match the snapshot with disabled status', () => {
-        const { asFragment } = renderComponent(theme, 'primary', { disabled: true })
+        const { asFragment } = renderComponent(theme, 'primary', {
+          disabled: true,
+        })
         expect(asFragment()).toMatchSnapshot()
       })
     })

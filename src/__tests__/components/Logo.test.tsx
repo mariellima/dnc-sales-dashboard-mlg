@@ -21,7 +21,7 @@ describe('Logo', () => {
         const { container } = renderComponent(theme)
         expect(container.firstChild).toHaveStyleRule(
           'background-image',
-          `url(/${theme.appLogo})`                                                                                                                                                                                                                                                                                                                      
+          `url(/${theme.appLogo})`
         )
       })
       it('should apply the correct height and width', () => {
